@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".volunteers.ui.main.view.SplashScreen">
+
+    <ImageView
+        android:id="@+id/splash_logo_fragment"
+        android:layout_width="410dp"
+        android:layout_height="346dp"
+        android:contentDescription="@string/jagrati_logo"
+        android:src="@drawable/jagrati_logo"
+        android:transitionName="splash_logo_fragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/splash_logo_faded_fragment"
+        android:layout_width="643dp"
+        android:layout_height="503dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="460dp"
+        android:alpha="0.25"
+        android:src="@drawable/jagrati_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/jagrati_logo" />
+
+    <TextView
+        android:id="@+id/splash_attr_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="@string/splash_attr"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splash_logo_fragment" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

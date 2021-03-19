@@ -145,7 +145,8 @@ public class login_page extends AppCompatActivity{
                         if(currentUser != null) {
                             if (currentUser.isEmailVerified()) {
 
-                                startActivity(new Intent(login_page.this, HomePage.class));
+                                Intent intent = new Intent(login_page.this,HomePage.class);
+                                startActivity(intent);
 //                                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 //                                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
 //                                        .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)

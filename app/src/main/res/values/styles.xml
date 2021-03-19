@@ -30,11 +30,7 @@
         <item name="android:statusBarColor">@color/appbar</item>
         <item name="boxStrokeColor">@color/appbar</item>
         <item name="boxStrokeWidth">1dp</item>
-
         <item name="colorOnPrimary">@color/appbar</item>
-
-
-
     </style>
 
     <style name="full_screen_dialog">
@@ -87,5 +83,14 @@
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark">
         <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
     </style>
+
+    <style name="LightMode" parent="Theme.AppCompat.Light">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="DarkMode" parent="Theme.AppCompat">
+        <item name="android:background">@color/black</item>
+    </style>
+
 
 </resources>
