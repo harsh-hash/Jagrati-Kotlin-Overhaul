@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">@color/appbar</color>
+    <color name="colorPrimaryDark">#FFE0BE</color>
+    <color name="colorAccent">#F17E01</color>
+    <color name="background">#000000</color>
+    <color name="textColor">#ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="background_scrim">#C3000000</color>
+</resources>

@@ -13,8 +13,8 @@
             android:id="@+id/action_splashScreen_to_signUp"
             app:destination="@id/signUp" />
         <action
-            android:id="@+id/action_splashScreen_to_login2"
-            app:destination="@id/login2" />
+            android:id="@+id/action_splashScreen_to_login"
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/signUp"
@@ -22,7 +22,7 @@
         android:label="sign_up_fragment"
         tools:layout="@layout/sign_up_fragment" />
     <fragment
-        android:id="@+id/login2"
+        android:id="@+id/login"
         android:name="com.example.jagratiapp.volunteers.ui.main.view.Login"
         android:label="login_fragment"
         tools:layout="@layout/login_fragment" />

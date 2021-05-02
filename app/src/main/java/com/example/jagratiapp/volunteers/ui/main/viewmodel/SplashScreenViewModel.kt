@@ -19,6 +19,7 @@ class SplashScreenViewModel : ViewModel() {
     var userLiveData : MutableLiveData<FirebaseUser> = getUser()
 
     private fun getUser(): MutableLiveData<FirebaseUser> {
+        authRepository.getUser()
         return authRepository.users
     }
     var isEmailVerified : MutableLiveData<Boolean?> = MutableLiveData(getVerification())
