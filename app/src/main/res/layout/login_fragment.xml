@@ -1,13 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.jagratiapp.volunteers.ui.main.viewmodel.LoginViewModel" />
+    </data>
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".volunteers.ui.main.view.Login">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    <include
+        android:id="@+id/include6"
+        layout="@layout/login_ui"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/include6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_login_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_email"
+            style="@style/authTextInputLayout"
+
+            app:layout_constraintBottom_toTopOf="@+id/password_login_text_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_login"
+                android:background="@color/background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/edit_text_size"
+                android:text="@={viewModel.email}"
+                tools:text="abc@jagrati.co" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_login_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            style="@style/authTextInputLayout"
+
+            app:layout_constraintBottom_toTopOf="@+id/forgot_password_login_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_login_text_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textSize="@dimen/edit_text_size"
+                android:text="@={viewModel.password}"
+
+                tools:text="Password"
+                android:background="@color/background"
+                android:outlineAmbientShadowColor="@color/colorPrimary"
+                tools:targetApi="p" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/forgot_password_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/transparentButton"
+            android:text="@string/forgot_password"
+
+            android:layout_marginTop="@dimen/appbar_padding_top"
+            app:layout_constraintEnd_toEndOf="@+id/password_login_text_layout"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/password_login_text_layout"
+            app:layout_constraintTop_toBottomOf="@+id/password_login_text_layout" />
+
+        <Button
+            android:id="@+id/signUp_button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"
+            android:textColor="@color/black"
+            android:textSize="@dimen/button_text_size"
+            android:background="@drawable/login_frag_buttons"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/login_button"
+            app:layout_constraintTop_toBottomOf="@+id/forgot_password_login_button" />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_frag_buttons"
+            android:textSize="@dimen/button_text_size"
+            android:textColor="@color/black"
+            android:text="@string/login"
+            android:onClick="@{()-> viewModel.onLoginClicked()}"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/signUp_button"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forgot_password_login_button"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/login_volunteer_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/transparentButton"
+        android:text="@string/login_as_student"
+
+        android:layout_marginBottom="@dimen/fab_bottom"
+        app:layout_constraintBottom_toBottomOf="@+id/include6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

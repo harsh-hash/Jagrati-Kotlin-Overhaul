@@ -11,52 +11,43 @@ import com.google.firebase.auth.FirebaseUser
 
 class AuthenticationService  {
     private var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    var firebaseUser = MutableLiveData<FirebaseUser>(getUser())
+    var firebaseUser:MutableLiveData<FirebaseUser> = MutableLiveData()
     private val TAG : String = "Authentication Service: "
     private var check:String = ""
+    private var signInCheck:String = ""
+    var loginSuccess:MutableLiveData<Boolean> = MutableLiveData(false)
 
 
-    private fun getUser(): FirebaseUser?{
-        return firebaseAuth.currentUser
-    }
+
     fun signUp(email:String, password:String):String{
         firebaseAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener {
-                    if (it.isSuccessful)
-                    {
+                    check = if (it.isSuccessful) {
+                        firebaseAuth.currentUser?.sendEmailVerification()
                         firebaseAuth.signOut()
-                        check  = "Check Email for Verification"
-                    }
-                    else {
+                        "Check Email for Verification"
+                    } else {
                         Log.w(TAG, "signUp: failure", it.exception)
-//                        signUpSuccess.postValue("Authentication Failed")
-                        check = it.exception.toString()
 
+                        it.exception.toString()
                     }
                 }
             return check
 
     }
 
-    fun signIn(email:String,password:String){
+    fun signIn(email:String,password:String):String{
         firebaseAuth.signInWithEmailAndPassword(email,password)
-                .addOnCompleteListener {task ->
-                    if (task.isSuccessful){
-                        if (firebaseAuth.currentUser.isEmailVerified)
-                        {
-                            firebaseUser.postValue(firebaseAuth.currentUser)
-//                            isSignedIn.postValue("Logged in Successfully")
-                        }
-                        else
-                        {
-//                            isSignedIn.postValue("Please Verify your Email")
-                            firebaseAuth.signOut()
-                        }
-                    }
+                .addOnCompleteListener {
+                     check = if (it.isSuccessful){
+                                firebaseUser.postValue(firebaseAuth.currentUser)
+                                loginSuccess.postValue(true)
+                                it.exception.toString()
+                     }
                     else
-                        Log.w(TAG, "signIn: ${task.exception.toString()}", task.exception)
-//                        isSignedIn.postValue("Login Credential Incorrect")
+                         it.exception.toString()
                 }
+       return check
     }
 
     }

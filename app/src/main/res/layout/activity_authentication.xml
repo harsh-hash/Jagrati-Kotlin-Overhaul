@@ -8,9 +8,9 @@
     android:layout_height="match_parent"
     tools:context=".volunteers.ui.main.view.Authentication">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_auth_controller"
-        android:name="com.example.jagratiapp.volunteers.ui.main.view.SplashScreen"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
